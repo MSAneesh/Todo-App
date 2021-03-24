@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+       
+</head>
+<body >
+    <br>
+    <header style="margin-left: 39.5%;font-size: 50px;color: white;">MY TODO LIST</header>
+
+   
+    <!-- form for getting inputs from the user -->
+    <form action="/task" method="POST">
+    
+        <div class="container" style="width: 30%; margin: 40px auto;">
+           
+            <div class="form-group">
+                <input type="text" name="task" placeholder="Type Here" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="deadline" placeholder="Type Here" class="form-control">
+            </div>
+            
+        
+            <button class="btn btn-primary" style="margin-left: 180px ;">ADD</button>
+        </div>
+    </form>
+
+        <!--the tasks passed to this file by the response object is to be displayed-->
+        <!-- forEach() is a JS function that loops through every object. Here every individual object is referred by the variable x.-->
+        <% tasks.forEach(function(x){ %>
+            
+            <div class="card" style="width: 25rem;margin-left: 37%;">
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><%= x.work %>
+
+                    
+                    
+                    <a class="btn btn-success" href="todo/<%= x._id %>/edit" style="position: absolute;right:25px;top:22px;"></a>
+                    
+                
+                    <div class="vl"></div> <%= x.day %> 
+                    
+                   <form action="/task/<%= x._id %>?_method=DELETE" method="POST">
+                       <button style="position: absolute;right:25px;bottom:18px;" class="btn btn-danger small" ></button></li>
+                   </form>
+
+                </ul>
+              </div>
+            
+              
+                
+                
+    
+        <% }) %>
+    
+</body>
+
+<style>
+    
+    .vl {
+      border-left: 3px solid green;
+      height: 20px;
+    }
+    body{
+        background-color:rgb(17, 110, 185)
+    }
+
+</style>
+    
+</html>
